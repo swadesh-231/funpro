@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .heart {
+            position: relative;
+            width: 100px;
+            height: 90px;
+            background-color: #e63946;
+            transform: rotate(-45deg);
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.5s ease;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 90px;
+            background-color: #e63946;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -45px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: 45px;
+        }
+
+        .heart.clicked {
+            background-color: #2a9d8f;
+        }
+    </style>
+</head>
+<body>
+    <div class="heart" onclick="changeColor()"></div>
+
+    <script>
+        function changeColor() {
+            var heart = document.querySelector('.heart');
+            heart.classList.toggle('clicked');
+        }
+
+        function rotateAndChangeColor() {
+            var heart = document.querySelector('.heart');
+            heart.style.transform = `rotate(${Math.random() * 360}deg)`;
+            changeColor();
+        }
+
+        setInterval(rotateAndChangeColor, 2000); 
+    </script>
+</body>
+</html>
